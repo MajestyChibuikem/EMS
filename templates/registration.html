@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Registration Form{% endblock %}
+
+{% block content %}
+<div class="reg-container">
+    <form id="registration-form">
+        <div class="form-group">
+            <label for="full-name">Full Name: </label>
+            <input class="finput" type="text" id="full-name" name="full-name" required>
+        </div>
+        <div class="form-group">
+            <label for="registration-number">Reg Number: </label>
+            <input type="text" id="registration-number" name="registration_number" required>
+        </div>
+        <button type="submit" id="register-button">Register</button>
+
+        <div id="message" style="margin-top: 10px;"></div>
+    </form>
+    
+
+</div>
+<script src="{{ url_for('static', filename='js/registration.js') }}" defer></script>
+
+{% endblock %}
+
+
