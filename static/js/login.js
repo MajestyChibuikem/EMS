@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault(); //prevent default form submission
     
         const regNumber = document.getElementById('registration-number').value.trim(); //get the trimmed regnumber value
-        const full_name = document.getElementById('full_name').value.trim();
+        const full_name = document.getElementById('full-name').value.trim();
         //check if the input fields are empty
         if (!regNumber) {
             displayMsg.textContent = "Registration Number is required!";

@@ -1,14 +1,14 @@
 
 #import all flask methods to be used from flask
-import pprint
 from flask import (
     Flask,
     render_template,
     request,
-    jsonify
+    jsonify,
+    url_for
 )
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static', template_folder='templates')
 
 # defined the user array
 user_arrays = []
@@ -20,6 +20,10 @@ def home():
     return render_template('registration.html')  # Correct template path
 
 
+#registration route
+@app.route('/register')
+def registration():
+    return render_template('registration.html')
 """
     this route gets the info from the form, checks if the user doesnt exist
     to save it to the user array
@@ -30,6 +34,7 @@ def submit_registration():
     data = request.json # get the data in json format
     full_name = data.get('full_name') #target the fullname value
     reg_number = data.get('reg_number') #target the reg_number value
+    email = data.get('email')
 
 
     # Log the user_arrays before adding a new user
@@ -43,11 +48,16 @@ def submit_registration():
     # Append new user model
     user_arrays.append({
         'full_name': full_name,
-        'reg_number': reg_number
+        'reg_number': reg_number,
+        'email' : email
     })
 
     #return message
-    return jsonify({"success": True, "message": "User registered successfully"})
+    return jsonify({
+        "success": True,
+        "message": "User registered successfully",
+        "redirect_url": url_for('login')  # Dynamic URL for the login route
+    })
 
 """
     the login route 
@@ -69,7 +79,6 @@ def validate_login():
     data = request.json #get the data in json format
     full_name = data.get('full_name') #get the fullname value
     reg_number = data.get('reg_number') #get the reg number value
-
     if not full_name or not reg_number:
         return jsonify({'success': False, 'message': 'Missing required fields'}), 400
 
@@ -78,7 +87,7 @@ def validate_login():
         None
     )
     if user:
-        return jsonify({'success': True, 'message': 'Login successful'})
+        return jsonify({'success': True, 'message': 'Login successful'}) 
     return jsonify({'success': False, 'message': 'Invalid credentials'}), 401
 
 

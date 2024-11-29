@@ -6,9 +6,11 @@ const registerButton = document.querySelector('#register-button'); //target the 
 
 // Validate form fields
 function ValidateForm() {
-    // Get the fullname and reg number and trim out white spaces
+    // Get the fullname and reg number and trim out white spacesc
     const fullName = document.getElementById('full-name').value.trim();
+    //'   chibuke   majesty
     const regNumber = document.getElementById('registration-number').value.trim();
+    const Email = document.getElementById('email').value.trim()
 
     // If fullname is empty
     //this method checks if full name field is empty and outputs an error message if true
@@ -25,6 +27,11 @@ function ValidateForm() {
     if (!regNumber) {
         displayMsg.textContent = "Registration Number is required!";
         displayMsg.style.color = "red";
+        return false;
+    }
+    if(!Email){
+        displayMsg.textContent = "email is required";
+        displayMsg.style.color = "red"
         return false;
     }
     return true;
@@ -44,7 +51,8 @@ registerButton.addEventListener('click', async (event) => {
     // Collect form data
     const formData = {
         'full_name': document.getElementById('full-name').value,
-        'reg_number': document.getElementById('registration-number').value
+        'reg_number': document.getElementById('registration-number').value,
+        'email':document.getElementById('email').value
     };
 
     //send the formdata as a string to the submitregistration route and await the response
@@ -64,6 +72,10 @@ registerButton.addEventListener('click', async (event) => {
             displayMsg.textContent = result.message;
             displayMsg.style.color = "green";
             registrationForm.reset(); // Reset form on success
+            //this block adds a little delay and redirects to the login page
+            setTimeout(() => {
+                window.location.href = result.redirect_url;
+            }, 200);
         } else {
             displayMsg.textContent = result.message;
             displayMsg.style.color = "red";

@@ -3,7 +3,11 @@
 {% block title %}Registration Form{% endblock %}
 
 {% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
 <div class="login-container">
+    <div class="img">
+        <img src="{{ url_for('static', filename='img/1732783066853.jpg') }}" alt="">
+    </div>
     <form id="login-form">
         <div class="form-group">
             <label for="full-name">Full Name: </label>
@@ -13,7 +17,9 @@
             <label for="registration-number">Reg Number: </label>
             <input type="text" id="registration-number" name="registration_number" required>
         </div>
-        <button type="submit" id="login-button">Login</button>
+        <a href="{{ url_for('registration') }}">REGISTER</a>
+        <button type="submit" id="login-button" class="login-btn">Login</button>
+        
 
         <div id="message" style="margin-top: 10px;"></div>
     </form>
