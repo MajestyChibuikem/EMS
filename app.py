@@ -32,8 +32,8 @@ def registration():
 @app.route('/submit-registration', methods=['POST'])
 def submit_registration():
     data = request.json # get the data in json format
-    full_name = data.get('full_name') #target the fullname value
-    reg_number = data.get('reg_number') #target the reg_number value
+    user_name = data.get('user_name') #target the fullname value
+    password = data.get('password') #target the reg_number value
     email = data.get('email')
 
 
@@ -41,14 +41,14 @@ def submit_registration():
     print("Before adding:", user_arrays) #debugging
 
     # Check if user exists
-    existing_user = next((user for user in user_arrays if user['reg_number'] == reg_number), None)
+    existing_user = next((user for user in user_arrays if user['email'] == email), None)
     if existing_user:
         return jsonify({"success": False, "message": "User already exists"}), 400
 
     # Append new user model
     user_arrays.append({
-        'full_name': full_name,
-        'reg_number': reg_number,
+        'user_name': user_name,
+        'password': password,
         'email' : email
     })
 
@@ -77,13 +77,13 @@ def login():
 @app.route('/validate-login', methods=['POST'])
 def validate_login():
     data = request.json #get the data in json format
-    full_name = data.get('full_name') #get the fullname value
-    reg_number = data.get('reg_number') #get the reg number value
-    if not full_name or not reg_number:
+    user_name = data.get('user_name') #get the fullname value
+    password = data.get('password') #get the reg number value
+    if not user_name or not password:
         return jsonify({'success': False, 'message': 'Missing required fields'}), 400
 
     user = next(
-        (user for user in user_arrays if user.get('reg_number') == reg_number and user.get('full_name') == full_name),
+        (user for user in user_arrays if user.get('password') == password and user.get('full_name') == user_name),
         None
     )
     if user:

@@ -7,9 +7,9 @@ const registerButton = document.querySelector('#register-button'); //target the 
 // Validate form fields
 function ValidateForm() {
     // Get the fullname and reg number and trim out white spacesc
-    const fullName = document.getElementById('full-name').value.trim();
-    //'   chibuke   majesty
-    const regNumber = document.getElementById('registration-number').value.trim();
+    const fullName = document.getElementById('user_name').value.trim();
+    //   chibuke   majesty
+    const Password = document.getElementById('password').value.trim();
     const Email = document.getElementById('email').value.trim()
 
     // If fullname is empty
@@ -24,7 +24,7 @@ function ValidateForm() {
     // If reg number is empty
     //this method checks if regnumber field is empty and outputs an error message if true
     //the message is given a color of red
-    if (!regNumber) {
+    if (!Password) {
         displayMsg.textContent = "Registration Number is required!";
         displayMsg.style.color = "red";
         return false;
@@ -50,8 +50,8 @@ registerButton.addEventListener('click', async (event) => {
 
     // Collect form data
     const formData = {
-        'full_name': document.getElementById('full-name').value,
-        'reg_number': document.getElementById('registration-number').value,
+        'user_name': document.getElementById('user_name').value,
+        'password': document.getElementById('password').value,
         'email':document.getElementById('email').value
     };
 
@@ -85,3 +85,4 @@ registerButton.addEventListener('click', async (event) => {
         displayMsg.style.color = "red";
     }
 });
+

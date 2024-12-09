@@ -10,12 +10,12 @@
     </div>
     <form id="login-form">
         <div class="form-group">
-            <label for="full-name">Full Name: </label>
-            <input class="finput" type="text" id="full-name" name="full-name" required>
+            <label for="full-name">user-name: </label>
+            <input class="finput" type="text" id="user_name" name="user_name" required>
         </div>
         <div class="form-group">
-            <label for="registration-number">Reg Number: </label>
-            <input type="text" id="registration-number" name="registration_number" required>
+            <label for="registration-number">password: </label>
+            <input type="text" id="password" name="password" required>
         </div>
         <a href="{{ url_for('registration') }}">REGISTER</a>
         <button type="submit" id="login-button" class="login-btn">Login</button>

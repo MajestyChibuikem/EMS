@@ -6,10 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
     loginButton.addEventListener('click', async (event) => {
         event.preventDefault(); //prevent default form submission
     
-        const regNumber = document.getElementById('registration-number').value.trim(); //get the trimmed regnumber value
-        const full_name = document.getElementById('full-name').value.trim();
+        const Password = document.getElementById('password').value.trim(); //get the trimmed regnumber value
+        const full_name = document.getElementById('user_name').value.trim();
         //check if the input fields are empty
-        if (!regNumber) {
+        if (!Password) {
             displayMsg.textContent = "Registration Number is required!";
             displayMsg.style.color = "red";
             return;
@@ -21,8 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         //get values and assign them into the json format
         const formData = {
-            full_name: document.getElementById('full-name').value.trim(),
-            reg_number: document.getElementById('registration-number').value.trim(),
+            user_name: document.getElementById('user_name').value.trim(),
+            password: document.getElementById('password').value.trim(),
         };
         
 

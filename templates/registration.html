@@ -4,32 +4,45 @@
 
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/registration.css') }}">
-<div class="reg-container">
-    <form id="registration-form">
-        <div class="img">
-            <img src="{{ url_for('static', filename='img/1732782541632.jpg') }}" alt="">
-        </div>
-        <div class="form-group">
-            <label for="full-name">Full Name: </label>
-            <input class="finput" type="text" id="full-name" name="full-name" required>
-        </div>
-        <div class="form-group">
-            <label for="email">Email: </label>
-            <input class="einput" type="text" id="email" name="email" required>
-        </div>
-        <div class="form-group">
-            <label for="registration-number">Reg Number: </label>
-            <input type="text" id="registration-number" name="registration_number" required>
-        </div>
-        <button type="button" id="register-button" class="reg-btn">Register</button>
-        <a href="{{ url_for('login') }}">LOGIN</a>
-        <div id="message" style="margin-top: 10px;"></div>
-    </form>
-    
+<div class="main">
 
+    <div class="side-image">
+        <img src="{{url_for('static', filename='img/registrationImg.png') }}" alt="">
+    </div>
+    <div class="reg-container">
+        <form id="registration-form">
+            <div class="img">
+                <img src="{{ url_for('static', filename='img/1732782541632.jpg') }}" alt="">
+            </div>
+            <div class="form-group">
+                <label for="full-name">User Name: </label>
+                <input class="finput" type="text" id="user_name" name="user-name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email: </label>
+                <input class="einput" type="text" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="registration-number">Password: </label>
+                <input type="text" id="password" name="password" required>
+            </div>
+            <button type="button" id="register-button" class="reg-btn">Register</button>
+            <a href="{{ url_for('login') }}">LOGIN</a>
+            <div id="message" style="margin-top: 10px;"></div>
+        </form>
+        
+    
+    </div>
 </div>
 <script src="{{ url_for('static', filename='js/registration.js') }}" defer></script>
 
 {% endblock %}
 
 
+<!-- 
+
+
+full-name
+
+
+-->

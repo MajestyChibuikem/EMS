@@ -10,6 +10,42 @@ body{
     justify-content: center;
     align-items: center;
 }
+/* Flexbox container for side-by-side layout */
+.main {
+    display: flex; /* Make children side by side */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    gap: 20px; /* Space between image and form */
+    max-width: 1200px; /* Prevent layout from stretching too wide */
+    margin: auto;
+    padding: 20px;
+}
+
+/* Style for the side image container */
+.side-image {
+    flex: 1; /* Image container takes equal space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2f2f2f; /* Add slight contrast for image container */
+    border: 3px solid #4f87be; /* Same border style as form */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.side-image img {
+    max-width: 100%; /* Ensure image does not overflow */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Adjust the registration container */
+.reg-container {
+    flex: 1; /* Form container takes equal space */
+    margin: 0; /* Remove any margins */
+}
+
 .reg-container{
     background-color: #413f3f;
     color: #e0e0e0;
